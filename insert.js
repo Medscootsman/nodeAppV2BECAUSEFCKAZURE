@@ -2,13 +2,13 @@
  * Created by 1607084 on 21/11/2016.
  */
 //lets require/import the mongodb native drivers.
-var mongodb = require("mongodb");
+var mongodb = require('mongodb');
 //and our HTTP server
 var http = require('http');
 //setup our port
 var port = process.env.PORT || 1337; //WHHHYYYYYYYYYYY SO MUCH
 
-var url = 'mongodb://<dbuser>:<dbpassword>@ds050879.mlab.com:50879/nodeapp';
+var url = 'mongodb://testcats:cat@ds050879.mlab.com:50879/nodeapp';
 
 var MongoClient = mongodb.MongoClient;
 http.createServer(function(request, response) {

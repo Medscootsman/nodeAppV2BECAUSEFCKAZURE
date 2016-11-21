@@ -10,7 +10,7 @@ var port = process.env.PORT || 1337; //WHHHYYYYYYYYYYY SO MUCH
 
 var url = 'mongodb://testcats:cat@ds050879.mlab.com:50879/nodeapp';
 
-var MongoClient = mongodb.MongoClient;
+var MongoClient  = mongodb.MongoClient;
 http.createServer(function(request, response) {
     response.writeHead(200, { 'Content-Type': 'text/plain' });
     response.write('Connecting \n');
