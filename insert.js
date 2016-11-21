@@ -44,8 +44,9 @@ http.createServer(function(request, response) {
                 }
 
                 db.close;
-                response.end('DB closed');
             });
+                response.end('DB closed');
+
         }
     });
 
