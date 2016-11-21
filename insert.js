@@ -23,7 +23,7 @@ http.createServer(function(request, response) {
             db.close();
         } else {
             //HURRAY!! We are connected. :)
-            response.write('Connection established to' + url +"\n");
+            response.write('Connection established to' + url + "\n");
 
             // do some work here with the database.
             //get the documents collection
@@ -33,8 +33,10 @@ http.createServer(function(request, response) {
 
             var user2 = {name: 'modulus user', age: 22, roles: ['user']};
 
-            var user3 = {name: 'modulus super admin', age: 110, roles: ['super-admin', 'admin',
-                'moderator', 'user']};
+            var user3 = {
+                name: 'modulus super admin', age: 110, roles: ['super-admin', 'admin',
+                    'moderator', 'user']
+            };
 
             collection.insert([user1, user2, user3], function (err, result) {
                 if (err) {
@@ -44,13 +46,12 @@ http.createServer(function(request, response) {
                     console.log(result);
                     response.write("Inserted " + result.insertedCount + ' documents ok. + "\n"');
                 }
+                //Close connection
+                db.close();
+                response.end('Finished, Connection closed \n');
+
             });
-
-            //Done Close connection
-            db.close();
         }
-        response.end('Finished, Connection closed \n');
-    });
-
-}).listen(port);
+    }).listen(port);}
+    
 
