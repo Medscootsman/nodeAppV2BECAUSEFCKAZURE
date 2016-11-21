@@ -19,7 +19,7 @@ http.createServer(function(request, response) {
         response.write('Connection Made \n');
         if (err) {
             response.write('Unable to connect to the mongoDB server. Error:' + err + "\n");
-            //Error so close connection
+            //Error so close connecgfgfgtion
             db.close();
         } else {
             //HURRAY!! We are connected. :)
