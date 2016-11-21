@@ -27,6 +27,19 @@ http.createServer(function(request, response) {
 
             // Get the documents collection
             var collection = db.collection('users');
+            var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user']};
+            var user2 = {name: 'modulus user', age: 22, roles: ['user']};
+            var user3 = {name: 'modulus super admin', age: 92, roles: ['super-admin', 'admin', 'moderator', 'user']};
+
+            collection.insert([user1, user2, user3], function (err, result) {
+                if (err) {
+                    response.write('Insert failed ' + err + "\n");
+                } else {
+                    console.log(result);
+                    response.write('Inserted ' + result.insertedCount + ' documents ok. +"\n"');
+                }
+
+            });
 
             //We have a cursor now with our find criteria
             var results = collection.find({name: 'modulus user'});
@@ -44,9 +57,6 @@ http.createServer(function(request, response) {
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
             });
-
-
-
 
             // do some work here with the database.
 
