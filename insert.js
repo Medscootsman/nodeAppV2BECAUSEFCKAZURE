@@ -43,9 +43,10 @@ http.createServer(function(request, response) {
                     response.write('No document found');
                 }
 
-                db.close;
-            });
+                db.close
                 response.end('DB closed');
+            });
+
 
         }
     });
