@@ -56,12 +56,13 @@ http.createServer(function(request, response) {
                 } else {
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
+                db.close();
             });
 
             // do some work here with the database.
 
             //Done Close connection
-            db.close();
+
         }
         response.end('Finished, Connection closed \n');
     });
