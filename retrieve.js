@@ -57,6 +57,7 @@ http.createServer(function(request, response) {
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
                 db.close();
+                response.end('Finished, Connection closed \n');
             });
 
             // do some work here with the database.
@@ -64,7 +65,6 @@ http.createServer(function(request, response) {
             //Done Close connection
 
         }
-        response.end('Finished, Connection closed \n');
     });
 
 }).listen(port);
