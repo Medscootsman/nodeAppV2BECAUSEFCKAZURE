@@ -8,7 +8,7 @@ var http = require('http');
 //setup our port
 var port = process.env.PORT || 1337; //WHHHYYYYYYYYYYY SO MUCH
 
-var url = 'mongodb://testcats:cat@ds050879.mlab.com:50879/nodeapp';
+var url = 'mongodb://<dbuser>:<dbpassword>@ds050879.mlab.com:50879/nodeapp';
 
 var MongoClient = mongodb.MongoClient;
 http.createServer(function(request, response) {
@@ -26,6 +26,25 @@ http.createServer(function(request, response) {
             response.write('Connection established to' + url +"\n");
 
             // do some work here with the database.
+            //get the documents collection
+            var collection = db.collection('users');
+
+            var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user']};
+
+            var user2 = {name: 'modulus user', age: 22, roles: ['user']};
+
+            var user3 = {name: 'modulus super admin', age: 110, roles: ['super-admin', 'admin',
+                'moderator', 'user']};
+
+            collection.insert([user1, user2, user3], function (err, result) {
+                if (err) {
+                    response.write('Insert failed ' + err + "\n");
+
+                } else {
+                    console.log(result);
+                    response.write("Inserted " + result.insertedCount + ' documents ok. + "\n"');
+                }
+            }
 
             //Done Close connection
             db.close();
