@@ -44,7 +44,7 @@ http.createServer(function(request, response) {
                     console.log(result);
                     response.write("Inserted " + result.insertedCount + ' documents ok. + "\n"');
                 }
-            })
+            });
 
             //Done Close connection
             db.close();
