@@ -6,5 +6,17 @@ var port = process.env.PORT || 1337; //CRINGE
 
 http.createServer(function(request, response) {
     response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('Hello world!\n');
+    response.write("<!DOCTYPE 'html'>");
+    response.write("<html>");
+    response.write("<head>");
+    response.write("<title>Murray's top banter site. </title>");
+    response.write("</head>");
+    response.write("<body>");
+    response.write("<h1>");
+    response.write("PHP is shite mySQL is shite");
+    response.write("</h1>");
+    response.write("</body>");
+    response.write("</html>");
+    response.end();
 }).listen(port);
+console.log("RGU > ABERDEEN");
