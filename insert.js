@@ -34,17 +34,17 @@ http.createServer(function(request, response) {
             var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user']};
             var user2 = {name: 'modulus user', age: 22, roles: ['user']};
             var user3 = {name: 'modulus super admin', age: 92, roles: ['super-admin', 'admin', 'moderator', 'user']};
-            collection.insert([user1, user2, user3], function (err, result) {
+            collection.update({name: 'modulus user'}, {$set: {enabled: false}}, function (err, numUpdated) {
                 if (err) {
-                    response.write('Insert failed ' + err + "\n");
+                    response.write(err);
+                } else if (numUpdated) {
+                    response.write('Updated Seuccesfully : ' + numUpdated + "\n");
                 } else {
-                    console.log(result);
-                    response.write('Inserted ' + result.insertedCount + ' documents ok. +"\n"');
+                    response.write('No document found');
                 }
-                //Close connection
-                db.close();
-                response.end('Finished, Connection closed \n');
-                //remove any other db.close or response.end statement below this line k
+
+                db.close;
+                response.end('DB closed');
             });
         }
     });
